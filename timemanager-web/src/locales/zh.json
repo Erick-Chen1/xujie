@@ -1,0 +1,81 @@
+{
+  "app": {
+    "title": "时间管理器",
+    "loading": "加载中..."
+  },
+  "auth": {
+    "login": "登录",
+    "signup": {
+      "title": "注册",
+      "submit": "注册",
+      "loading": "注册中...",
+      "error": "注册失败",
+      "passwordMismatch": "两次输入的密码不匹配"
+    },
+    "logout": "退出",
+    "email": "邮箱",
+    "password": "密码",
+    "confirmPassword": "确认密码",
+    "loginButton": "登录",
+    "signupButton": "注册",
+    "forgotPassword": "忘记密码？"
+  },
+  "planning": {
+    "title": "智能规划",
+    "description": "用自然语言描述您的计划，让AI帮您组织安排",
+    "inputPlaceholder": "在此输入您的计划...",
+    "submitButton": "开始规划！"
+  },
+  "schedules": {
+    "title": "您的日程",
+    "create": "创建日程",
+    "filterByDate": "按日期筛选",
+    "noSchedules": "未找到日程",
+    "titleField": "标题",
+    "startTime": "开始时间",
+    "endTime": "结束时间",
+    "location": "地点",
+    "description": "描述"
+  },
+  "tasks": {
+    "title": "您的任务",
+    "create": "创建任务",
+    "noTasks": "未找到任务",
+    "titleField": "标题",
+    "dueDate": "截止日期",
+    "priority": "优先级",
+    "status": "状态",
+    "description": "描述"
+  },
+  "preferences": {
+    "title": "设置与偏好",
+    "subtitle": "管理您的通知和时区设置",
+    "notifications": {
+      "title": "通知设置",
+      "description": "配置如何接收通知",
+      "enable": "启用通知",
+      "enableDescription": "接收任务和日程的通知"
+    },
+    "timezone": {
+      "title": "时区",
+      "select": "选择您的时区"
+    },
+    "language": {
+      "title": "语言",
+      "select": "选择您的语言",
+      "en": "English",
+      "zh": "中文"
+    }
+  },
+  "common": {
+    "save": "保存",
+    "cancel": "取消",
+    "delete": "删除",
+    "edit": "编辑",
+    "create": "创建",
+    "submit": "提交",
+    "success": "成功",
+    "error": "错误",
+    "loading": "加载中..."
+  }
+}
