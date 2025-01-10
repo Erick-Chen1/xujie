@@ -1,0 +1,46 @@
+<UserControl x:Class="TimeManager.Client.Views.SchedulesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:TimeManager.Client.ViewModels"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance Type=vm:ScheduleViewModel}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Performance optimized list with virtualization -->
+        <ListView Grid.Row="1" 
+                  ItemsSource="{Binding Schedules}"
+                  SelectedItem="{Binding SelectedSchedule}"
+                  VirtualizingPanel.IsVirtualizing="True"
+                  VirtualizingPanel.VirtualizationMode="Recycling"
+                  ScrollViewer.IsDeferredScrollingEnabled="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Margin="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel>
+                            <TextBlock Text="{Binding Title}" 
+                                     FontWeight="Bold"/>
+                            <TextBlock Text="{Binding Description}"
+                                     TextWrapping="Wrap"/>
+                            <TextBlock Text="{Binding Location}"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="1" 
+                                  Margin="10,0,0,0">
+                            <TextBlock Text="{Binding StartTime, StringFormat=g}"/>
+                            <TextBlock Text="{Binding EndTime, StringFormat=t}"/>
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</UserControl>
