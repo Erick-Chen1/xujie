@@ -1,0 +1,81 @@
+{
+  "app": {
+    "title": "Time Manager",
+    "loading": "Loading..."
+  },
+  "auth": {
+    "login": "Login",
+    "signup": {
+      "title": "Sign Up",
+      "submit": "Sign Up",
+      "loading": "Signing up...",
+      "error": "Signup failed",
+      "passwordMismatch": "Passwords do not match"
+    },
+    "logout": "Logout",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "loginButton": "Log In",
+    "signupButton": "Sign Up",
+    "forgotPassword": "Forgot Password?"
+  },
+  "planning": {
+    "title": "Smart Planning",
+    "description": "Describe your plans in natural language and let our AI help you organize them",
+    "inputPlaceholder": "Enter your plans here...",
+    "submitButton": "Plan It!"
+  },
+  "schedules": {
+    "title": "Your Schedules",
+    "create": "Create Schedule",
+    "filterByDate": "Filter by date",
+    "noSchedules": "No schedules found",
+    "titleField": "Title",
+    "startTime": "Start Time",
+    "endTime": "End Time",
+    "location": "Location",
+    "description": "Description"
+  },
+  "tasks": {
+    "title": "Your Tasks",
+    "create": "Create Task",
+    "noTasks": "No tasks found",
+    "titleField": "Title",
+    "dueDate": "Due Date",
+    "priority": "Priority",
+    "status": "Status",
+    "description": "Description"
+  },
+  "preferences": {
+    "title": "Preferences",
+    "subtitle": "Manage your notification and timezone settings",
+    "notifications": {
+      "title": "Notification Settings",
+      "description": "Configure how and when you want to receive notifications",
+      "enable": "Enable Notifications",
+      "enableDescription": "Receive notifications for tasks and schedules"
+    },
+    "timezone": {
+      "title": "Timezone",
+      "select": "Select your timezone"
+    },
+    "language": {
+      "title": "Language",
+      "select": "Select your language",
+      "en": "English",
+      "zh": "中文"
+    }
+  },
+  "common": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "create": "Create",
+    "submit": "Submit",
+    "success": "Success",
+    "error": "Error",
+    "loading": "Loading..."
+  }
+}
