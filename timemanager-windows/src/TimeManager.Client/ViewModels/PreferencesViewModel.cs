@@ -4,6 +4,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using TimeManager.Client.Models;
 using TimeManager.Client.Services;
+using TaskModel = TimeManager.Client.Models.Task;
 
 namespace TimeManager.Client.ViewModels
 {
@@ -28,11 +29,11 @@ namespace TimeManager.Client.ViewModels
             _syncService = syncService;
             _localization = localization;
             preferences = new UserPreferences();
-            LoadPreferencesCommand.Execute(null);
+            _ = LoadPreferencesCommand.ExecuteAsync(null);
         }
 
         [RelayCommand]
-        private async Task LoadPreferences()
+        private async Task LoadPreferencesAsync()
         {
             // Load from local storage first
             var localPrefs = await _localStorage.GetPreferencesAsync();
@@ -46,7 +47,7 @@ namespace TimeManager.Client.ViewModels
         }
 
         [RelayCommand]
-        private async Task SavePreferences()
+        private async Task SavePreferencesAsync()
         {
             try
             {

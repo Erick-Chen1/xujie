@@ -5,6 +5,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using TimeManager.Client.Models;
 using TimeManager.Client.Services;
+using TaskModel = TimeManager.Client.Models.Task;
 
 namespace TimeManager.Client.ViewModels
 {
@@ -14,10 +15,10 @@ namespace TimeManager.Client.ViewModels
         private readonly SyncService _syncService;
 
         [ObservableProperty]
-        private ObservableCollection<Models.Task> tasks = new();
+        private ObservableCollection<TaskModel> tasks = new();
 
         [ObservableProperty]
-        private Models.Task? selectedTask;
+        private TaskModel? selectedTask;
 
         [ObservableProperty]
         private bool isLoading;
@@ -26,18 +27,18 @@ namespace TimeManager.Client.ViewModels
         {
             _localStorage = localStorage;
             _syncService = syncService;
-            LoadTasksCommand.Execute(null);
+            _ = LoadTasksCommand.ExecuteAsync(null);
         }
 
         [RelayCommand]
-        private async Task LoadTasks()
+        private async Task LoadTasksAsync()
         {
             try
             {
                 IsLoading = true;
                 // Load from local storage first for immediate response
                 var localTasks = await _localStorage.GetTasksAsync();
-                Tasks = new ObservableCollection<Models.Task>(localTasks);
+                Tasks = new ObservableCollection<TaskModel>(localTasks);
 
                 // Then sync with server in background
                 await _syncService.SyncTasks();
@@ -49,7 +50,7 @@ namespace TimeManager.Client.ViewModels
         }
 
         [RelayCommand]
-        private async Task AddTask(Models.Task task)
+        private async Task AddTaskAsync(TaskModel task)
         {
             // Save locally first
             await _localStorage.AddTaskAsync(task);
@@ -60,7 +61,7 @@ namespace TimeManager.Client.ViewModels
         }
 
         [RelayCommand]
-        private async Task UpdateTask(Models.Task task)
+        private async Task UpdateTaskAsync(TaskModel task)
         {
             // Update locally first
             await _localStorage.UpdateTaskAsync(task);
@@ -75,7 +76,7 @@ namespace TimeManager.Client.ViewModels
         }
 
         [RelayCommand]
-        private async Task DeleteTask(Models.Task task)
+        private async Task DeleteTaskAsync(TaskModel task)
         {
             // Delete locally first
             await _localStorage.DeleteTaskAsync(task);

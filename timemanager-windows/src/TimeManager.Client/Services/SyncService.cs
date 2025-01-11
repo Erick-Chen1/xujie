@@ -4,6 +4,7 @@ using System.Net.Http;
 using System.Net.Http.Json;
 using System.Collections.Generic;
 using TimeManager.Client.Models;
+using TaskModel = TimeManager.Client.Models.Task;
 
 namespace TimeManager.Client.Services
 {
