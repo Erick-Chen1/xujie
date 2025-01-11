@@ -9,10 +9,11 @@
     <ScrollViewer>
         <StackPanel Margin="20">
             <GroupBox Header="Language">
-                <ComboBox SelectedValue="{Binding Preferences.Language}"
+                <ComboBox SelectedValuePath="Tag" 
+                         SelectedValue="{Binding Preferences.Language}"
                          Margin="5">
-                    <ComboBoxItem Content="English" Value="en"/>
-                    <ComboBoxItem Content="中文" Value="zh"/>
+                    <ComboBoxItem Content="English" Tag="en"/>
+                    <ComboBoxItem Content="中文" Tag="zh"/>
                 </ComboBox>
             </GroupBox>
 
