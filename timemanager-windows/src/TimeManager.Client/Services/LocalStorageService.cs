@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.IO;
 using TimeManager.Client.Models;
 using TaskModel = TimeManager.Client.Models.Task;
-using SystemTask = System.Threading.Tasks.Task;
 
 namespace TimeManager.Client.Services
 {
@@ -24,7 +23,7 @@ namespace TimeManager.Client.Services
             InitializeDatabase().Wait();
         }
 
-        private async SystemTask InitializeDatabase()
+        private async System.Threading.Tasks.Task InitializeDatabase()
         {
             using var connection = new SqliteConnection(connectionString);
             await connection.OpenAsync();
@@ -66,7 +65,7 @@ namespace TimeManager.Client.Services
             await command.ExecuteNonQueryAsync();
         }
 
-        public async SystemTask<List<TaskModel>> GetTasksAsync()
+        public async System.Threading.Tasks.Task<List<TaskModel>> GetTasksAsync()
         {
             using var connection = new SqliteConnection(connectionString);
             await connection.OpenAsync();
@@ -94,7 +93,7 @@ namespace TimeManager.Client.Services
             return tasks;
         }
 
-        public async SystemTask<List<Schedule>> GetSchedulesAsync()
+        public async System.Threading.Tasks.Task<List<Schedule>> GetSchedulesAsync()
         {
             using var connection = new SqliteConnection(connectionString);
             await connection.OpenAsync();
@@ -121,7 +120,7 @@ namespace TimeManager.Client.Services
             return schedules;
         }
 
-        public async SystemTask<UserPreferences> GetPreferencesAsync()
+        public async System.Threading.Tasks.Task<UserPreferences> GetPreferencesAsync()
         {
             using var connection = new SqliteConnection(connectionString);
             await connection.OpenAsync();
@@ -146,7 +145,7 @@ namespace TimeManager.Client.Services
             return new Preferences();
         }
 
-        public async SystemTask AddTaskAsync(TaskModel task)
+        public async System.Threading.Tasks.Task AddTaskAsync(TaskModel task)
         {
             using var connection = new SqliteConnection(connectionString);
             await connection.OpenAsync();
@@ -167,7 +166,7 @@ namespace TimeManager.Client.Services
             await command.ExecuteNonQueryAsync();
         }
 
-        public async SystemTask UpdateTaskAsync(TaskModel task)
+        public async System.Threading.Tasks.Task UpdateTaskAsync(TaskModel task)
         {
             using var connection = new SqliteConnection(connectionString);
             await connection.OpenAsync();
@@ -190,7 +189,7 @@ namespace TimeManager.Client.Services
             await command.ExecuteNonQueryAsync();
         }
 
-        public async SystemTask DeleteTaskAsync(TaskModel task)
+        public async System.Threading.Tasks.Task DeleteTaskAsync(TaskModel task)
         {
             using var connection = new SqliteConnection(connectionString);
             await connection.OpenAsync();
@@ -202,7 +201,7 @@ namespace TimeManager.Client.Services
             await command.ExecuteNonQueryAsync();
         }
 
-        public async SystemTask AddScheduleAsync(Schedule schedule)
+        public async System.Threading.Tasks.Task AddScheduleAsync(Schedule schedule)
         {
             using var connection = new SqliteConnection(connectionString);
             await connection.OpenAsync();
@@ -222,7 +221,7 @@ namespace TimeManager.Client.Services
             await command.ExecuteNonQueryAsync();
         }
 
-        public async SystemTask UpdateScheduleAsync(Schedule schedule)
+        public async System.Threading.Tasks.Task UpdateScheduleAsync(Schedule schedule)
         {
             using var connection = new SqliteConnection(connectionString);
             await connection.OpenAsync();
@@ -245,7 +244,7 @@ namespace TimeManager.Client.Services
             await command.ExecuteNonQueryAsync();
         }
 
-        public async SystemTask DeleteScheduleAsync(Schedule schedule)
+        public async System.Threading.Tasks.Task DeleteScheduleAsync(Schedule schedule)
         {
             using var connection = new SqliteConnection(connectionString);
             await connection.OpenAsync();
@@ -257,7 +256,7 @@ namespace TimeManager.Client.Services
             await command.ExecuteNonQueryAsync();
         }
 
-        public async SystemTask SavePreferencesAsync(UserPreferences preferences)
+        public async System.Threading.Tasks.Task SavePreferencesAsync(UserPreferences preferences)
         {
             using var connection = new SqliteConnection(connectionString);
             await connection.OpenAsync();

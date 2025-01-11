@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Linq;
 using TimeManager.Client.Models;
 using TaskModel = TimeManager.Client.Models.Task;
-using SystemTask = System.Threading.Tasks.Task;
 
 namespace TimeManager.Client.Services
 {
@@ -24,7 +23,7 @@ namespace TimeManager.Client.Services
             _httpClient = new HttpClient { BaseAddress = new Uri(baseUrl) };
         }
 
-        public async SystemTask StartBackgroundSync()
+        public async System.Threading.Tasks.Task StartBackgroundSync()
         {
             while (true)
             {
@@ -52,7 +51,7 @@ namespace TimeManager.Client.Services
             }
         }
 
-        private async SystemTask SyncChanges()
+        private async System.Threading.Tasks.Task SyncChanges()
         {
             try
             {
@@ -67,7 +66,7 @@ namespace TimeManager.Client.Services
             }
         }
 
-        private async SystemTask ProcessSyncQueue()
+        private async System.Threading.Tasks.Task ProcessSyncQueue()
         {
             while (true)
             {
@@ -101,7 +100,7 @@ namespace TimeManager.Client.Services
             }
         }
 
-        private async SystemTask SyncTaskChange(TaskModel task, SyncOperation operation)
+        private async System.Threading.Tasks.Task SyncTaskChange(TaskModel task, SyncOperation operation)
         {
             var endpoint = $"/api/tasks";
             try
@@ -125,7 +124,7 @@ namespace TimeManager.Client.Services
             }
         }
 
-        private async SystemTask SyncScheduleChange(Schedule schedule, SyncOperation operation)
+        private async System.Threading.Tasks.Task SyncScheduleChange(Schedule schedule, SyncOperation operation)
         {
             var endpoint = $"/api/schedules";
             try
@@ -149,7 +148,7 @@ namespace TimeManager.Client.Services
             }
         }
 
-        private async SystemTask SyncPreferencesChange(UserPreferences preferences, SyncOperation operation)
+        private async System.Threading.Tasks.Task SyncPreferencesChange(UserPreferences preferences, SyncOperation operation)
         {
             var endpoint = $"/api/preferences";
             try
@@ -166,7 +165,7 @@ namespace TimeManager.Client.Services
             }
         }
 
-        public async SystemTask SyncTasks()
+        public async System.Threading.Tasks.Task SyncTasks()
         {
             try
             {
@@ -182,7 +181,7 @@ namespace TimeManager.Client.Services
             }
         }
 
-        public async SystemTask SyncSchedules()
+        public async System.Threading.Tasks.Task SyncSchedules()
         {
             try
             {
@@ -198,7 +197,7 @@ namespace TimeManager.Client.Services
             }
         }
 
-        public async SystemTask SyncPreferences()
+        public async System.Threading.Tasks.Task SyncPreferences()
         {
             try
             {
