@@ -10,6 +10,7 @@
     <OptimizationPreference>Speed</OptimizationPreference>
     <EnableTrimming>true</EnableTrimming>
     <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
   </PropertyGroup>
 
   <ItemGroup>
