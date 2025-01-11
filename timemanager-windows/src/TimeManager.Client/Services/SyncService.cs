@@ -1,10 +1,11 @@
 using System;
-using System.Threading.Tasks;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Collections.Generic;
+using System.Linq;
 using TimeManager.Client.Models;
 using TaskModel = TimeManager.Client.Models.Task;
+using SystemTask = System.Threading.Tasks.Task;
 
 namespace TimeManager.Client.Services
 {
@@ -23,7 +24,7 @@ namespace TimeManager.Client.Services
             _httpClient = new HttpClient { BaseAddress = new Uri(baseUrl) };
         }
 
-        public async Task StartBackgroundSync()
+        public async SystemTask StartBackgroundSync()
         {
             while (true)
             {
@@ -40,12 +41,177 @@ namespace TimeManager.Client.Services
             }
         }
 
-        private async Task SyncChanges()
+        private readonly Queue<(object Entity, SyncOperation Operation)> _syncQueue = new();
+        private readonly object _queueLock = new();
+
+        public void QueueChange(object entity, SyncOperation operation)
         {
-            // Implement optimized batch sync logic
-            // Use compression for payloads > 10KB
-            // Handle conflicts with local-wins strategy
-            // Cache successful syncs to prevent duplicates
+            lock (_queueLock)
+            {
+                _syncQueue.Enqueue((entity, operation));
+            }
+        }
+
+        private async SystemTask SyncChanges()
+        {
+            try
+            {
+                await SyncTasks();
+                await SyncSchedules();
+                await SyncPreferences();
+                await ProcessSyncQueue();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error during sync: {ex.Message}");
+            }
+        }
+
+        private async SystemTask ProcessSyncQueue()
+        {
+            while (true)
+            {
+                (object Entity, SyncOperation Operation) change;
+                lock (_queueLock)
+                {
+                    if (!_syncQueue.Any())
+                        break;
+                    change = _syncQueue.Dequeue();
+                }
+
+                try
+                {
+                    switch (change.Entity)
+                    {
+                        case TaskModel task:
+                            await SyncTaskChange(task, change.Operation);
+                            break;
+                        case Schedule schedule:
+                            await SyncScheduleChange(schedule, change.Operation);
+                            break;
+                        case Preferences preferences:
+                            await SyncPreferencesChange(preferences, change.Operation);
+                            break;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error processing sync change: {ex.Message}");
+                }
+            }
+        }
+
+        private async SystemTask SyncTaskChange(TaskModel task, SyncOperation operation)
+        {
+            var endpoint = $"/api/tasks";
+            try
+            {
+                switch (operation)
+                {
+                    case SyncOperation.Add:
+                        await _httpClient.PostAsJsonAsync(endpoint, task);
+                        break;
+                    case SyncOperation.Update:
+                        await _httpClient.PutAsJsonAsync($"{endpoint}/{task.Id}", task);
+                        break;
+                    case SyncOperation.Delete:
+                        await _httpClient.DeleteAsync($"{endpoint}/{task.Id}");
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error syncing task change: {ex.Message}");
+            }
+        }
+
+        private async SystemTask SyncScheduleChange(Schedule schedule, SyncOperation operation)
+        {
+            var endpoint = $"/api/schedules";
+            try
+            {
+                switch (operation)
+                {
+                    case SyncOperation.Add:
+                        await _httpClient.PostAsJsonAsync(endpoint, schedule);
+                        break;
+                    case SyncOperation.Update:
+                        await _httpClient.PutAsJsonAsync($"{endpoint}/{schedule.Id}", schedule);
+                        break;
+                    case SyncOperation.Delete:
+                        await _httpClient.DeleteAsync($"{endpoint}/{schedule.Id}");
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error syncing schedule change: {ex.Message}");
+            }
+        }
+
+        private async SystemTask SyncPreferencesChange(UserPreferences preferences, SyncOperation operation)
+        {
+            var endpoint = $"/api/preferences";
+            try
+            {
+                // Preferences only support updates
+                if (operation == SyncOperation.Update)
+                {
+                    await _httpClient.PutAsJsonAsync(endpoint, preferences);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error syncing preferences change: {ex.Message}");
+            }
+        }
+
+        public async SystemTask SyncTasks()
+        {
+            try
+            {
+                var tasks = await _httpClient.GetFromJsonAsync<List<TaskModel>>("/api/tasks");
+                if (tasks != null)
+                {
+                    await _localStorage.SaveTasksAsync(tasks);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error syncing tasks: {ex.Message}");
+            }
+        }
+
+        public async SystemTask SyncSchedules()
+        {
+            try
+            {
+                var schedules = await _httpClient.GetFromJsonAsync<List<Schedule>>("/api/schedules");
+                if (schedules != null)
+                {
+                    await _localStorage.SaveSchedulesAsync(schedules);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error syncing schedules: {ex.Message}");
+            }
+        }
+
+        public async SystemTask SyncPreferences()
+        {
+            try
+            {
+                var preferences = await _httpClient.GetFromJsonAsync<UserPreferences>("/api/preferences");
+                if (preferences != null)
+                {
+                    await _localStorage.SavePreferencesAsync(preferences);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error syncing preferences: {ex.Message}");
+            }
         }
     }
 }

@@ -1,0 +1,9 @@
+/home/ubuntu/repos/xujie/timemanager-windows/src/TimeManager.Client/obj/Release/net8.0-windows/win-x64/TimeManager.Client.csproj.AssemblyReference.cache
+/home/ubuntu/repos/xujie/timemanager-windows/src/TimeManager.Client/obj/Release/net8.0-windows/win-x64/MainWindow.baml
+/home/ubuntu/repos/xujie/timemanager-windows/src/TimeManager.Client/obj/Release/net8.0-windows/win-x64/MainWindow.g.cs
+/home/ubuntu/repos/xujie/timemanager-windows/src/TimeManager.Client/obj/Release/net8.0-windows/win-x64/Views/SchedulesView.g.cs
+/home/ubuntu/repos/xujie/timemanager-windows/src/TimeManager.Client/obj/Release/net8.0-windows/win-x64/Views/TasksView.g.cs
+/home/ubuntu/repos/xujie/timemanager-windows/src/TimeManager.Client/obj/Release/net8.0-windows/win-x64/App.g.cs
+/home/ubuntu/repos/xujie/timemanager-windows/src/TimeManager.Client/obj/Release/net8.0-windows/win-x64/TimeManager.Client_MarkupCompile.cache
+/home/ubuntu/repos/xujie/timemanager-windows/src/TimeManager.Client/obj/Release/net8.0-windows/win-x64/TimeManager.Client_MarkupCompile.lref
+/home/ubuntu/repos/xujie/timemanager-windows/src/TimeManager.Client/obj/Release/net8.0-windows/win-x64/Views/PreferencesView.g.cs

@@ -6,6 +6,7 @@ using CommunityToolkit.Mvvm.Input;
 using TimeManager.Client.Models;
 using TimeManager.Client.Services;
 using TaskModel = TimeManager.Client.Models.Task;
+using SystemTask = System.Threading.Tasks.Task;
 
 namespace TimeManager.Client.ViewModels
 {
@@ -31,7 +32,7 @@ namespace TimeManager.Client.ViewModels
         }
 
         [RelayCommand]
-        private async Task LoadTasksAsync()
+        public async SystemTask LoadTasksAsync()
         {
             try
             {
@@ -50,7 +51,7 @@ namespace TimeManager.Client.ViewModels
         }
 
         [RelayCommand]
-        private async Task AddTaskAsync(TaskModel task)
+        public async SystemTask AddTaskAsync(TaskModel task)
         {
             // Save locally first
             await _localStorage.AddTaskAsync(task);
@@ -61,7 +62,7 @@ namespace TimeManager.Client.ViewModels
         }
 
         [RelayCommand]
-        private async Task UpdateTaskAsync(TaskModel task)
+        public async SystemTask UpdateTaskAsync(TaskModel task)
         {
             // Update locally first
             await _localStorage.UpdateTaskAsync(task);
@@ -76,7 +77,7 @@ namespace TimeManager.Client.ViewModels
         }
 
         [RelayCommand]
-        private async Task DeleteTaskAsync(TaskModel task)
+        public async SystemTask DeleteTaskAsync(TaskModel task)
         {
             // Delete locally first
             await _localStorage.DeleteTaskAsync(task);
