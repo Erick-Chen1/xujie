@@ -58,6 +58,101 @@
         ],
         "recommended_duration": "25分钟工作，5分钟休息"
       }
+    },
+    {
+      "id": "m001-method",
+      "title": "函数可视化学习法",
+      "description": "通过绘制和分析函数图像来理解函数性质。步骤：1.绘制基本图形 2.观察特征点 3.分析变化规律 4.总结性质",
+      "source": "数学教学实践",
+      "tags": [
+        "函数",
+        "图像",
+        "可视化",
+        "分析"
+      ],
+      "effectiveness_rating": 4.6,
+      "difficulty_level": "中等",
+      "time_commitment": "每个函数类型45-60分钟",
+      "prerequisites": [
+        "基础函数知识",
+        "坐标系概念"
+      ],
+      "created_at": "2025-01-17T15:00:00.000000",
+      "updated_at": "2025-01-17T15:00:00.000000",
+      "metadata": {
+        "best_for": [
+          "函数理解",
+          "图像分析",
+          "性质归纳"
+        ],
+        "recommended_subjects": [
+          "数学",
+          "函数"
+        ]
+      }
+    },
+    {
+      "id": "m002-method",
+      "title": "数学公式推导法",
+      "description": "通过逐步推导和验证来掌握数学公式。步骤：1.理解已知条件 2.列出关键步骤 3.逐步推导 4.验证结果",
+      "source": "数学教学经验",
+      "tags": [
+        "公式",
+        "推导",
+        "验证",
+        "理解"
+      ],
+      "effectiveness_rating": 4.7,
+      "difficulty_level": "中等",
+      "time_commitment": "每个公式30-45分钟",
+      "prerequisites": [
+        "基础运算能力",
+        "逻辑思维"
+      ],
+      "created_at": "2025-01-17T15:00:00.000000",
+      "updated_at": "2025-01-17T15:00:00.000000",
+      "metadata": {
+        "best_for": [
+          "公式理解",
+          "推理能力",
+          "逻辑思维"
+        ],
+        "recommended_subjects": [
+          "数学",
+          "物理"
+        ]
+      }
+    },
+    {
+      "id": "m003-method",
+      "title": "数学题型归纳法",
+      "description": "通过分类和归纳来掌握各类题型的解题方法。步骤：1.收集同类题目 2.分析解题思路 3.总结解题模式 4.练习应用",
+      "source": "教学研究",
+      "tags": [
+        "题型",
+        "归纳",
+        "解题",
+        "练习"
+      ],
+      "effectiveness_rating": 4.8,
+      "difficulty_level": "中等",
+      "time_commitment": "每个题型类别60-90分钟",
+      "prerequisites": [
+        "基础知识掌握",
+        "解题经验"
+      ],
+      "created_at": "2025-01-17T15:00:00.000000",
+      "updated_at": "2025-01-17T15:00:00.000000",
+      "metadata": {
+        "best_for": [
+          "解题技巧",
+          "方法总结",
+          "能力提升"
+        ],
+        "recommended_subjects": [
+          "数学"
+        ]
+      }
     }
   ]
 }
