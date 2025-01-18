@@ -1,1 +1,1 @@
-web: uvicorn app.main:app --host 0.0.0.0 --port 80 --workers 1 --limit-concurrency 1 --timeout-keep-alive 2 --no-access-log --no-lifespan --proxy-headers --forwarded-allow-ips="*" --memory-limit 96 --reload-delay 5 --backlog 8 --http httptools --loop uvloop --no-server-header --no-date-header
+web: PYTHONPATH=/app uvicorn app.main:app --host 0.0.0.0 --port 80 --workers 1 --limit-concurrency 1 --timeout-keep-alive 2 --no-access-log --no-lifespan --proxy-headers --forwarded-allow-ips="*" --memory-limit 96 --reload-delay 5 --backlog 8
