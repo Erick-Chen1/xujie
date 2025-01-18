@@ -2,6 +2,13 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 from functools import lru_cache
 
 class Settings(BaseSettings):
+    model_config = SettingsConfigDict(
+        env_file=".env",
+        env_file_encoding="utf-8",
+        case_sensitive=False,
+        extra="allow"
+    )
+
     # API Settings
     API_HOST: str = "0.0.0.0"
     API_PORT: int = 8000
@@ -14,12 +21,6 @@ class Settings(BaseSettings):
     
     # AI Model Settings
     EMBEDDING_MODEL: str = "paraphrase-MiniLM-L3-v2"  # Smallest available model
-    
-    model_config = SettingsConfigDict(
-        env_file=".env",
-        env_file_encoding="utf-8",
-        case_sensitive=False
-    )
     MAX_SEQUENCE_LENGTH: int = 32  # Minimal sequence length
     
     # Memory Management
