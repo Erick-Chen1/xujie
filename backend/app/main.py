@@ -1,10 +1,28 @@
 """Minimal FastAPI application with aggressive memory optimization."""
 import gc
 import os
+import sys
 import psutil
+import logging
+
+# Configure minimal logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+def log_memory():
+    """Log current memory usage."""
+    process = psutil.Process(os.getpid())
+    memory = process.memory_info()
+    logger.info(f"Memory Usage - RSS: {memory.rss / 1024 / 1024:.1f}MB, VMS: {memory.vms / 1024 / 1024:.1f}MB")
 
 def create_app():
     """Create FastAPI app with minimal imports."""
+    # Force garbage collection and log memory before imports
+    gc.collect()
+    log_memory()
+    logger.info("Initializing FastAPI application...")
+    
+    # Defer imports until absolutely necessary
     from fastapi import FastAPI
     from fastapi.middleware.cors import CORSMiddleware
     
