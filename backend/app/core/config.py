@@ -1,38 +1,27 @@
-from pydantic_settings import BaseSettings, SettingsConfigDict
-from functools import lru_cache
+import os
 
-class Settings(BaseSettings):
-    model_config = SettingsConfigDict(
-        env_file=None,  # Don't require .env file
-        case_sensitive=False,
-        extra="allow",
-        validate_default=True
-    )
+class Settings:
+    def __init__(self):
+        # API Settings
+        self.API_HOST = os.getenv("API_HOST", "0.0.0.0")
+        self.API_PORT = int(os.getenv("API_PORT", "8000"))
+        
+        # Database
+        self.DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///:memory:")
+        
+        # CORS
+        self.FRONTEND_URL = os.getenv("FRONTEND_URL", "*")
+        
+        # AI Model Settings
+        self.EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL", "paraphrase-MiniLM-L3-v2")
+        self.MAX_SEQUENCE_LENGTH = int(os.getenv("MAX_SEQUENCE_LENGTH", "32"))
+        
+        # Memory Management
+        self.MODEL_DEVICE = os.getenv("MODEL_DEVICE", "cpu")
+        self.TORCH_THREADS = int(os.getenv("TORCH_THREADS", "1"))
+        self.BATCH_SIZE = int(os.getenv("BATCH_SIZE", "4"))
+        self.ENABLE_CUDA = os.getenv("ENABLE_CUDA", "false").lower() == "true"
+        self.GC_COLLECT_INTERVAL = int(os.getenv("GC_COLLECT_INTERVAL", "10"))
+        self.LAZY_LOAD_THRESHOLD = int(os.getenv("LAZY_LOAD_THRESHOLD", str(100 * 1024 * 1024)))
 
-    # API Settings
-    API_HOST: str | None = "0.0.0.0"
-    API_PORT: int | None = 8000
-    
-    # Database
-    DATABASE_URL: str | None = "sqlite:///:memory:"
-    
-    # CORS
-    FRONTEND_URL: str | None = "*"  # Allow all origins by default
-    
-    # AI Model Settings
-    EMBEDDING_MODEL: str | None = "paraphrase-MiniLM-L3-v2"
-    MAX_SEQUENCE_LENGTH: int | None = 32
-    
-    # Memory Management
-    MODEL_DEVICE: str | None = "cpu"
-    TORCH_THREADS: int | None = 1
-    BATCH_SIZE: int | None = 4
-    ENABLE_CUDA: bool | None = False
-    GC_COLLECT_INTERVAL: int | None = 10
-    LAZY_LOAD_THRESHOLD: int | None = 100 * 1024 * 1024
-    
-@lru_cache()
-def get_settings():
-    return Settings()
-
-settings = get_settings()
+settings = Settings()
