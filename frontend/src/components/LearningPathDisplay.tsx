@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Typography, Paper, List, ListItem, ListItemText, Divider } from '@mui/material';
+import { Box, Typography, Paper, Divider } from '@mui/material';
 
 interface LearningPathDisplayProps {
   learningPath: string;
