@@ -1,10 +1,10 @@
-from pydantic_settings import BaseSettings
+from pydantic_settings import BaseSettings, SettingsConfigDict
 from functools import lru_cache
 
 class Settings(BaseSettings):
     # API Settings
     API_HOST: str = "0.0.0.0"
-    API_PORT: int = 80
+    API_PORT: int = 8000
     
     # Database
     DATABASE_URL: str = "sqlite:///:memory:"
@@ -14,6 +14,12 @@ class Settings(BaseSettings):
     
     # AI Model Settings
     EMBEDDING_MODEL: str = "paraphrase-MiniLM-L3-v2"  # Smallest available model
+    
+    model_config = SettingsConfigDict(
+        env_file=".env",
+        env_file_encoding="utf-8",
+        case_sensitive=False
+    )
     MAX_SEQUENCE_LENGTH: int = 32  # Minimal sequence length
     
     # Memory Management
@@ -24,9 +30,6 @@ class Settings(BaseSettings):
     GC_COLLECT_INTERVAL: int = 10  # Very frequent garbage collection
     LAZY_LOAD_THRESHOLD: int = 100 * 1024 * 1024  # 100MB threshold for lazy loading
     
-    class Config:
-        env_file = ".env"
-
 @lru_cache()
 def get_settings():
     return Settings()
