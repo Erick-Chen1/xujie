@@ -1,0 +1,63 @@
+{
+  "methods": [
+    {
+      "id": "6f06a5af-0f06-408e-a068-886f7cce26b0",
+      "title": "费曼学习法",
+      "description": "通过向他人解释概念来深入理解。步骤：1.选择概念 2.假装教授他人 3.识别知识漏洞 4.简化并类比 5.复习和完善",
+      "source": "理查德·费曼",
+      "tags": [
+        "理解",
+        "教学",
+        "复习",
+        "深度学习"
+      ],
+      "effectiveness_rating": 4.8,
+      "difficulty_level": "中等",
+      "time_commitment": "每个概念30-60分钟",
+      "prerequisites": [
+        "基础知识",
+        "耐心"
+      ],
+      "created_at": "2025-01-17T14:59:49.695687",
+      "updated_at": "2025-01-17T14:59:49.695697",
+      "metadata": {
+        "best_for": [
+          "概念理解",
+          "长期记忆"
+        ],
+        "recommended_subjects": [
+          "理论性学科",
+          "科学",
+          "数学"
+        ]
+      }
+    },
+    {
+      "id": "aa9d53ee-e9e3-49bb-a800-400e42e6c1df",
+      "title": "番茄工作法",
+      "description": "将学习时间分成25分钟的专注时段，每个时段后短暂休息。完成4个时段后进行较长休息。",
+      "source": "Francesco Cirillo",
+      "tags": [
+        "时间管理",
+        "专注",
+        "效率",
+        "休息"
+      ],
+      "effectiveness_rating": 4.5,
+      "difficulty_level": "简单",
+      "time_commitment": "可灵活调整",
+      "prerequisites": [
+        "计时器"
+      ],
+      "created_at": "2025-01-17T14:59:49.695712",
+      "updated_at": "2025-01-17T14:59:49.695714",
+      "metadata": {
+        "best_for": [
+          "专注力提升",
+          "避免疲劳"
+        ],
+        "recommended_duration": "25分钟工作，5分钟休息"
+      }
+    }
+  ]
+}

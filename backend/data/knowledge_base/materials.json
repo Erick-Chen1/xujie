@@ -1,0 +1,44 @@
+[
+  {
+    "id": "m001",
+    "title": "数学基础概念入门",
+    "type": "textbook",
+    "difficulty_level": "入门",
+    "estimated_time": "60分钟",
+    "description": "介绍数学基本概念和定义，适合初学者。",
+    "subject": "数学",
+    "tags": [
+      "基础",
+      "概念",
+      "入门"
+    ]
+  },
+  {
+    "id": "m002",
+    "title": "数学练习题集",
+    "type": "exercise",
+    "difficulty_level": "中等",
+    "estimated_time": "45分钟",
+    "description": "包含各类数学练习题，帮助巩固知识。",
+    "subject": "数学",
+    "tags": [
+      "练习",
+      "题集",
+      "应用"
+    ]
+  },
+  {
+    "id": "m003",
+    "title": "高级数学解题技巧",
+    "type": "tutorial",
+    "difficulty_level": "高级",
+    "estimated_time": "90分钟",
+    "description": "讲解高级数学解题方法和技巧。",
+    "subject": "数学",
+    "tags": [
+      "技巧",
+      "解题",
+      "高级"
+    ]
+  }
+]
