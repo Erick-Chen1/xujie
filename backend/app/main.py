@@ -1,27 +1,32 @@
+"""Ultra-minimal FastAPI app with bare essentials only."""
+import gc
+import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.core.config import settings
-from app.api.v1.api import router as api_router
+
+# Force garbage collection
+gc.collect()
 
 # Create minimal FastAPI application
-app = FastAPI(
-    title="AI Learning Path API",
-    description="API for personalized learning path generation",
-    version="1.0.0"
-)
+app = FastAPI()
 
-# CORS configuration - Do not remove this for full-stack development
+# Configure CORS with environment variables
+origins = os.getenv("CORS_ORIGINS", "").split(",")
+if not any(origins):
+    raise ValueError("CORS_ORIGINS environment variable must be set")
+
+# Configure middleware with environment variables
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[settings.FRONTEND_URL],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_origins=origins,
+    allow_credentials=os.getenv("CORS_CREDENTIALS", "false").lower() == "true",
+    allow_methods=os.getenv("CORS_METHODS", "GET,POST,PUT,DELETE").split(","),
+    allow_headers=os.getenv("CORS_HEADERS", "").split(",") or ["*"]
 )
 
-@app.get("/healthz")
-async def healthz():
-    return {"status": "ok"}
-
-# Include API router
-app.include_router(api_router, prefix="/api/v1")
+@app.get("/")
+@app.get("/health")
+async def health_check():
+    """Basic health check endpoint."""
+    gc.collect()  # Force garbage collection
+    return {"status": "healthy"}

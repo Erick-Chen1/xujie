@@ -5,13 +5,13 @@ from typing import List, Dict, Optional
 from datetime import datetime
 import uuid
 from sentence_transformers import SentenceTransformer
-from app.core.config import settings
+from app.core.config import EMBEDDING_MODEL, BATCH_SIZE
 from app.core.materials_knowledge_base import StudyMaterialKnowledgeBase
 
 class LearningPathGenerator:
     def __init__(self, model_name: Optional[str] = None):
         """Initialize the learning path generator."""
-        self.model_name = model_name or settings.EMBEDDING_MODEL
+        self.model_name = model_name or EMBEDDING_MODEL
         self.model = None  # Lazy load the model
         self.materials_kb = None  # Lazy load the knowledge base
         

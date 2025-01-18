@@ -6,12 +6,12 @@ from datetime import datetime
 import numpy as np
 from sentence_transformers import SentenceTransformer
 from app.core.knowledge_base import StudyMethodKnowledgeBase
-from app.core.config import settings
+from app.core.config import EMBEDDING_MODEL
 
 class PersonalizedMethodGenerator:
     def __init__(self, model_name: Optional[str] = None):
         """Initialize the personalized method generator."""
-        self.model_name = model_name or settings.EMBEDDING_MODEL
+        self.model_name = model_name or EMBEDDING_MODEL
         self.model = None  # Lazy load the model
         self.knowledge_base = None  # Lazy load the knowledge base
         

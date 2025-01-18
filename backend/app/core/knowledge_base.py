@@ -8,12 +8,12 @@ import numpy as np
 import torch
 from sentence_transformers import SentenceTransformer
 import faiss
-from app.core.config import settings
+from app.core.config import EMBEDDING_MODEL, BATCH_SIZE
 
 class StudyMethodKnowledgeBase:
     def __init__(self, model_name: Optional[str] = None):
         """Initialize the knowledge base with a sentence transformer model."""
-        self.model_name = model_name or settings.EMBEDDING_MODEL
+        self.model_name = model_name or EMBEDDING_MODEL
         self.model = None  # Lazy load
         self.index = None
         self.methods = []
@@ -56,7 +56,7 @@ class StudyMethodKnowledgeBase:
         texts = [self._create_method_text(method) for method in self.methods]
         
         # Generate embeddings in batches
-        batch_size = settings.BATCH_SIZE
+        batch_size = BATCH_SIZE
         embeddings_list = []
         
         for i in range(0, len(texts), batch_size):
