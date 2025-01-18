@@ -1,0 +1,290 @@
+{
+  "study_methods": [
+    {
+      "id": "concept-mapping-001",
+      "category": "基本概念",
+      "title": "概念图解法",
+      "description": "通过创建概念图来理解和记忆数学概念之间的关系",
+      "steps": [
+        "识别核心概念",
+        "列出相关概念",
+        "绘制概念之间的连接",
+        "添加关系说明",
+        "复习和完善概念图"
+      ],
+      "suitable_topics": [
+        "函数概念",
+        "几何图形",
+        "数列关系"
+      ],
+      "difficulty_level": "基础",
+      "time_required": "30-45分钟",
+      "prerequisites": [],
+      "learning_outcomes": [
+        "理解概念之间的关系",
+        "建立知识体系",
+        "提高记忆效果"
+      ]
+    },
+    {
+      "id": "problem-pattern-001",
+      "category": "性质与关系",
+      "title": "题型归纳法",
+      "description": "通过分析和归纳相似题目，掌握解题模式和技巧",
+      "steps": [
+        "收集同类型题目",
+        "分析解题步骤",
+        "总结共同特点",
+        "提炼解题模板",
+        "练习应用"
+      ],
+      "suitable_topics": [
+        "方程解法",
+        "不等式证明",
+        "几何证明"
+      ],
+      "difficulty_level": "提高",
+      "time_required": "45-60分钟",
+      "prerequisites": [
+        "基本解题技能",
+        "逻辑分析能力"
+      ],
+      "learning_outcomes": [
+        "掌握常见题型",
+        "提高解题效率",
+        "培养归纳能力"
+      ]
+    },
+    {
+      "id": "exploration-001",
+      "category": "探究与发现",
+      "title": "数学建模探究法",
+      "description": "通过实际问题建立数学模型，培养应用能力",
+      "steps": [
+        "分析实际问题",
+        "提取数学信息",
+        "建立数学模型",
+        "求解验证",
+        "总结反思"
+      ],
+      "suitable_topics": [
+        "应用题",
+        "概率统计",
+        "优化问题"
+      ],
+      "difficulty_level": "挑战",
+      "time_required": "60-90分钟",
+      "prerequisites": [
+        "基础数学知识",
+        "建模思维"
+      ],
+      "learning_outcomes": [
+        "提升应用能力",
+        "培养建模思维",
+        "增强解决实际问题的能力"
+      ]
+    },
+    {
+      "id": "basic-operations-001",
+      "category": "基本运算",
+      "title": "运算法则归纳法",
+      "description": "系统总结和掌握数学运算的基本法则和技巧",
+      "steps": [
+        "列举运算法则",
+        "分类整理",
+        "总结使用条件",
+        "练习应用",
+        "归纳错误案例"
+      ],
+      "suitable_topics": [
+        "代数运算",
+        "三角函数运算",
+        "向量运算"
+      ],
+      "difficulty_level": "基础",
+      "time_required": "30-45分钟",
+      "prerequisites": [],
+      "learning_outcomes": [
+        "掌握基本运算法则",
+        "提高运算速度",
+        "减少计算错误"
+      ]
+    },
+    {
+      "id": "application-001",
+      "category": "应用",
+      "title": "实际应用分析法",
+      "description": "通过分析实际问题场景，学习数学知识的应用",
+      "steps": [
+        "理解问题背景",
+        "提取数学信息",
+        "选择解决方法",
+        "解决问题",
+        "验证结果"
+      ],
+      "suitable_topics": [
+        "几何应用",
+        "函数应用",
+        "概率统计应用"
+      ],
+      "difficulty_level": "提高",
+      "time_required": "45-60分钟",
+      "prerequisites": [
+        "基础知识掌握",
+        "建模能力"
+      ],
+      "learning_outcomes": [
+        "提高应用能力",
+        "培养实践思维",
+        "增强解决问题能力"
+      ]
+    },
+    {
+      "id": "reading-thinking-001",
+      "category": "阅读与思考",
+      "title": "数学阅读理解法",
+      "description": "通过阅读数学文献和历史资料，深化对数学概念的理解",
+      "steps": [
+        "选择阅读材料",
+        "提取关键信息",
+        "分析数学思想",
+        "总结知识点",
+        "延伸思考"
+      ],
+      "suitable_topics": [
+        "数学史",
+        "数学思想方法",
+        "数学文化"
+      ],
+      "difficulty_level": "提高",
+      "time_required": "40-50分钟",
+      "prerequisites": [
+        "基础阅读能力",
+        "数学基础知识"
+      ],
+      "learning_outcomes": [
+        "提升数学素养",
+        "加深概念理解",
+        "培养思维能力"
+      ]
+    },
+    {
+      "id": "tech-application-001",
+      "category": "信息技术应用",
+      "title": "数学软件辅助学习法",
+      "description": "利用数学软件和工具辅助理解和解决数学问题",
+      "steps": [
+        "选择合适工具",
+        "学习基本操作",
+        "建立数学模型",
+        "可视化分析",
+        "验证结果"
+      ],
+      "suitable_topics": [
+        "函数图像",
+        "几何作图",
+        "数据分析"
+      ],
+      "difficulty_level": "基础",
+      "time_required": "30-45分钟",
+      "prerequisites": [
+        "基本计算机操作",
+        "数学基础知识"
+      ],
+      "learning_outcomes": [
+        "掌握数学软件使用",
+        "提高可视化理解",
+        "增强分析能力"
+      ]
+    },
+    {
+      "id": "math-writing-001",
+      "category": "文献阅读与数学写作",
+      "title": "数学论证写作法",
+      "description": "学习数学证明的写作方法和技巧",
+      "steps": [
+        "理解证明要求",
+        "整理思路",
+        "规范书写",
+        "逻辑论证",
+        "完善表达"
+      ],
+      "suitable_topics": [
+        "几何证明",
+        "代数证明",
+        "数学推导"
+      ],
+      "difficulty_level": "挑战",
+      "time_required": "50-60分钟",
+      "prerequisites": [
+        "基础证明能力",
+        "逻辑思维能力"
+      ],
+      "learning_outcomes": [
+        "提高数学写作能力",
+        "加强逻辑思维",
+        "培养严谨态度"
+      ]
+    },
+    {
+      "id": "exam-pattern-001",
+      "category": "考试技巧",
+      "title": "试题模式分析法",
+      "description": "通过分析历年试题，掌握考试重点和答题技巧",
+      "steps": [
+        "收集真题",
+        "分类整理",
+        "找出规律",
+        "总结方法",
+        "模拟练习"
+      ],
+      "suitable_topics": [
+        "高考数学",
+        "模拟试题",
+        "典型题目"
+      ],
+      "difficulty_level": "提高",
+      "time_required": "60-90分钟",
+      "prerequisites": [
+        "基础知识掌握",
+        "解题经验"
+      ],
+      "learning_outcomes": [
+        "掌握考试技巧",
+        "提高答题效率",
+        "增强应试能力"
+      ]
+    },
+    {
+      "id": "math-modeling-001",
+      "category": "数学建模",
+      "title": "数学建模方法论",
+      "description": "系统学习数学建模的方法和步骤，培养建模思维",
+      "steps": [
+        "分析实际问题",
+        "提取关键信息",
+        "建立数学模型",
+        "求解模型",
+        "验证结果",
+        "优化模型"
+      ],
+      "suitable_topics": [
+        "优化问题",
+        "预测模型",
+        "决策问题"
+      ],
+      "difficulty_level": "挑战",
+      "time_required": "90-120分钟",
+      "prerequisites": [
+        "基础数学知识",
+        "建模思维",
+        "计算机应用能力"
+      ],
+      "learning_outcomes": [
+        "掌握建模方法",
+        "提高应用能力",
+        "培养创新思维"
+      ]
+    }
+  ]
+}
