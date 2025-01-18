@@ -3,8 +3,9 @@ from typing import List
 from datetime import datetime
 import uuid
 from schemas.learning_path import LearningPathCreate, LearningPath
-from services.method_matcher import MethodMatcher
+from services.path_generator import PathGenerator
 from core.knowledge_base import KnowledgeBase
+from core.materials_base import MaterialsBase
 
 router = APIRouter()
 
@@ -14,14 +15,23 @@ def get_knowledge_base():
     kb.load_methods("data/study_methods/methods.json")
     return kb
 
-def get_method_matcher(kb: KnowledgeBase = Depends(get_knowledge_base)):
-    """Dependency to get MethodMatcher instance"""
-    return MethodMatcher(kb)
+def get_materials_base():
+    """Dependency to get MaterialsBase instance"""
+    mb = MaterialsBase()
+    mb.load_materials("data/study_materials/materials.json")
+    return mb
+
+def get_path_generator(
+    kb: KnowledgeBase = Depends(get_knowledge_base),
+    mb: MaterialsBase = Depends(get_materials_base)
+):
+    """Dependency to get PathGenerator instance"""
+    return PathGenerator(kb, mb)
 
 @router.post("/learning-path", response_model=LearningPath)
 async def create_learning_path(
     path: LearningPathCreate,
-    matcher: MethodMatcher = Depends(get_method_matcher)
+    generator: PathGenerator = Depends(get_path_generator)
 ):
     """
     Create a new learning path based on user preferences and goals
@@ -36,10 +46,10 @@ async def create_learning_path(
     }
     """
     try:
-        # Match study methods to user profile
-        matched_methods = await matcher.match_methods(path)
+        # Generate learning path with stages and materials
+        learning_stages = await generator.generate_path(path)
         
-        # Create learning path with matched methods
+        # Create learning path response
         learning_path = LearningPath(
             id=str(uuid.uuid4()),
             subject=path.subject,
@@ -48,7 +58,7 @@ async def create_learning_path(
             available_time=path.available_time,
             learning_style=path.learning_style,
             created_at=datetime.utcnow(),
-            tasks=matched_methods
+            tasks=learning_stages
         )
         
         return learning_path
