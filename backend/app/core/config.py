@@ -3,14 +3,14 @@ from functools import lru_cache
 
 class Settings(BaseSettings):
     # API Settings
-    API_HOST: str
-    API_PORT: int
+    API_HOST: str = "0.0.0.0"
+    API_PORT: int = 80
     
     # Database
-    DATABASE_URL: str
+    DATABASE_URL: str = "sqlite:///:memory:"
     
     # CORS
-    FRONTEND_URL: str
+    FRONTEND_URL: str = "https://ai-learning-planner-app-xjgsc107.devinapps.com"
     
     # AI Model Settings
     EMBEDDING_MODEL: str = "paraphrase-MiniLM-L3-v2"  # Smallest available model
