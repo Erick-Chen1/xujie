@@ -1,0 +1,126 @@
+{
+  "study_materials": [
+    {
+      "id": "function-concept-001",
+      "category": "基本概念",
+      "title": "函数的基本概念",
+      "description": "理解函数的定义、表示方法和基本性质",
+      "content": "函数是描述两个变量之间对应关系的数学概念。包括定义域、值域、对应关系等要素。",
+      "type": "教材",
+      "difficulty_level": "基础",
+      "estimated_time": "45分钟",
+      "prerequisites": [],
+      "related_methods": ["concept-mapping-001"],
+      "learning_outcomes": [
+        "理解函数的定义",
+        "掌握函数的表示方法",
+        "识别函数的基本性质"
+      ]
+    },
+    {
+      "id": "function-practice-001",
+      "category": "基本运算",
+      "title": "函数运算练习",
+      "description": "通过练习掌握函数的基本运算",
+      "content": "包含函数的四则运算、复合运算等典型练习题。",
+      "type": "练习题",
+      "difficulty_level": "提高",
+      "estimated_time": "60分钟",
+      "prerequisites": ["函数基本概念"],
+      "related_methods": ["problem-pattern-001"],
+      "learning_outcomes": [
+        "掌握函数的运算法则",
+        "提高函数运算能力",
+        "解决函数运算应用题"
+      ]
+    },
+    {
+      "id": "function-modeling-001",
+      "category": "数学建模",
+      "title": "函数建模实例",
+      "description": "学习如何用函数描述实际问题",
+      "content": "通过实际案例学习建立函数模型的方法和步骤。",
+      "type": "建模案例",
+      "difficulty_level": "挑战",
+      "estimated_time": "90分钟",
+      "prerequisites": [
+        "函数基本概念",
+        "函数运算"
+      ],
+      "related_methods": ["exploration-001", "math-modeling-001"],
+      "learning_outcomes": [
+        "掌握函数建模方法",
+        "提高实际问题分析能力",
+        "培养数学建模思维"
+      ]
+    },
+    {
+      "id": "geometry-concept-001",
+      "category": "基本概念",
+      "title": "几何基本概念与性质",
+      "description": "学习平面几何的基本概念和性质",
+      "content": "包括点、线、面的基本概念，以及平行、垂直等基本关系。",
+      "type": "教材",
+      "difficulty_level": "基础",
+      "estimated_time": "45分钟",
+      "prerequisites": [],
+      "related_methods": ["concept-mapping-001"],
+      "learning_outcomes": [
+        "掌握几何基本概念",
+        "理解几何图形性质",
+        "建立空间想象能力"
+      ]
+    },
+    {
+      "id": "geometry-tech-001",
+      "category": "信息技术应用",
+      "title": "几何作图软件应用",
+      "description": "使用几何画板探索几何性质",
+      "content": "通过动态几何软件验证和发现几何定理。",
+      "type": "技术应用",
+      "difficulty_level": "提高",
+      "estimated_time": "60分钟",
+      "prerequisites": ["几何基本概念"],
+      "related_methods": ["exploration-001"],
+      "learning_outcomes": [
+        "掌握几何软件使用",
+        "提高几何直观能力",
+        "培养探究精神"
+      ]
+    },
+    {
+      "id": "calculus-reading-001",
+      "category": "阅读与思考",
+      "title": "微积分发展史",
+      "description": "了解微积分的历史发展过程",
+      "content": "通过阅读了解牛顿、莱布尼茨等数学家的贡献。",
+      "type": "阅读材料",
+      "difficulty_level": "基础",
+      "estimated_time": "30分钟",
+      "prerequisites": [],
+      "related_methods": ["concept-mapping-001"],
+      "learning_outcomes": [
+        "了解数学发展历程",
+        "理解微积分意义",
+        "培养数学文化素养"
+      ]
+    },
+    {
+      "id": "probability-explore-001",
+      "category": "探究与发现",
+      "title": "概率统计探究实验",
+      "description": "通过实验探究概率规律",
+      "content": "设计和进行概率统计实验，收集数据验证理论。",
+      "type": "探究活动",
+      "difficulty_level": "提高",
+      "estimated_time": "90分钟",
+      "prerequisites": ["概率基础知识"],
+      "related_methods": ["exploration-001"],
+      "learning_outcomes": [
+        "掌握实验方法",
+        "理解概率规律",
+        "提高数据分析能力"
+      ]
+    }
+  ]
+}
