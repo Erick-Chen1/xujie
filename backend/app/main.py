@@ -1,87 +1,78 @@
-"""Minimal FastAPI application with aggressive memory optimization."""
+"""Ultra-minimal FastAPI application with aggressive memory optimization."""
 import gc
 import os
-import sys
-import psutil
 import logging
+from typing import Dict, Any
 
 # Configure minimal logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-def log_memory():
-    """Log current memory usage."""
-    process = psutil.Process(os.getpid())
-    memory = process.memory_info()
-    logger.info(f"Memory Usage - RSS: {memory.rss / 1024 / 1024:.1f}MB, VMS: {memory.vms / 1024 / 1024:.1f}MB")
+def log_memory() -> Dict[str, Any]:
+    """Get current memory usage."""
+    try:
+        import psutil
+        process = psutil.Process(os.getpid())
+        memory = process.memory_info()
+        stats = {
+            "rss": f"{memory.rss / 1024 / 1024:.1f}MB",
+            "vms": f"{memory.vms / 1024 / 1024:.1f}MB"
+        }
+        logger.info(f"Memory Usage - RSS: {stats['rss']}, VMS: {stats['vms']}")
+        return stats
+    except ImportError:
+        return {"error": "psutil not available"}
 
-def create_app():
-    """Create FastAPI app with minimal imports."""
-    # Force garbage collection and log memory before imports
+def create_minimal_app():
+    """Create bare minimum FastAPI app."""
+    # Force garbage collection
     gc.collect()
-    log_memory()
-    logger.info("Initializing FastAPI application...")
     
-    # Defer imports until absolutely necessary
-    from fastapi import FastAPI
+    # Import only what's needed for basic functionality
+    from fastapi import FastAPI, Response
     from fastapi.middleware.cors import CORSMiddleware
     
-    # Force garbage collection before creating app
-    gc.collect()
-    
+    # Create minimal app without docs
     app = FastAPI(
         title="AI Learning Path API",
         description="API for personalized learning path generation",
-        version="1.0.0"
+        version="1.0.0",
+        docs_url=None,  # Disable docs
+        redoc_url=None,  # Disable redoc
+        openapi_url=None  # Disable OpenAPI schema
     )
     
-    # CORS configuration - minimal middleware
+    # Minimal CORS
     app.add_middleware(
         CORSMiddleware,
         allow_origins=["*"],
-        allow_credentials=True,
-        allow_methods=["*"],
+        allow_methods=["GET", "POST"],
         allow_headers=["*"],
     )
     
     @app.get("/")
     @app.get("/health")
     async def health_check():
-        """Health check endpoint."""
-        # Force garbage collection
+        """Minimal health check."""
         gc.collect()
-        
-        # Get memory usage
-        process = psutil.Process(os.getpid())
-        memory = process.memory_info()
-        
-        return {
-            "status": "healthy",
-            "message": "API is running",
-            "memory": {
-                "rss": f"{memory.rss / 1024 / 1024:.1f}MB",
-                "vms": f"{memory.vms / 1024 / 1024:.1f}MB"
-            }
-        }
+        return Response(
+            content='{"status":"healthy"}',
+            media_type="application/json"
+        )
     
     @app.on_event("startup")
     async def startup_event():
-        """Import heavy modules only after startup."""
+        """Lazy load API router."""
         try:
-            # Force garbage collection before imports
-            gc.collect()
-            
-            # Import router lazily
-            from app.api.v1.api import router as api_router
-            app.include_router(api_router, prefix="/api/v1")
-            
-            # Clean up after router initialization
-            gc.collect()
+            # Import router only when needed
+            from app.api.v1.api import router
+            app.include_router(router, prefix="/api/v1")
         except Exception as e:
-            print(f"Warning: Failed to load API router: {e}")
+            logger.error(f"Router load failed: {e}")
+        finally:
             gc.collect()
     
     return app
 
-# Create app instance with minimal memory usage
-app = create_app()
+# Create minimal app instance
+app = create_minimal_app()
