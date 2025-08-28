@@ -18,7 +18,7 @@
     "dotenv": "^16.4.7",
     "joi": "^17.13.3",
     "jsonwebtoken": "^9.0.2",
-    "koa": "^2.15.3",
+    "koa": "^3.0.1",
     "koa-bodyparser": "^4.4.1",
     "prisma": "^6.2.1",
     "ts-node": "^10.9.2"
